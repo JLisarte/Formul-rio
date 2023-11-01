@@ -149,3 +149,14 @@ textarea {
   background-color: #4fb0f5;
   transition: 0.3s;
 }
+
+.form-control p {
+    color: #499bc0;
+    font-size: 14px;
+    font-weight: 600;
+}
+.form-control a {
+    color: #499bc0;
+    font-size: 14px;
+    font-weight: 600;
+}

@@ -154,7 +154,7 @@ function checkInputs() {
   } else {
     setSuccessFor(streetUser)
   }
-  
+
   if (neighborhoodUserValue === "") {
     setErrorFor(neighborhoodUser, "Preencha esse campo")
   } else {
@@ -239,6 +239,15 @@ function calculoIdade() {
 postalCodeUser.addEventListener("keyup", buscaCep)
 
 function buscaCep() {
+  let postalValue = postalCodeUser.value.trim()
+  postalValue = postalValue.replace(/[^0-9]/g, "").substring(0, 8)
+  const formattedPostal = postalValue.replace(
+    /^([\d]{2})([\d]{3})?([\d]{3})?/,
+    "$1.$2-$3"
+  )
+  console.log("Novo formato ", formattedPostal)
+  postalCodeUser.value = formattedPostal
+
   const cep = document.getElementById("postalCode-user").value
   if (cep !== "") {
     const url = "https://brasilapi.com.br/api/cep/v1/" + cep
@@ -255,6 +264,11 @@ function buscaCep() {
           endereco.neighborhood
         document.getElementById("city-user").value = endereco.city
         document.getElementById("state-user").value = endereco.state
+        return
+      }
+      if (req.status === 404) {
+        setErrorFor(cep, "CEP inválido")
+        return
       }
     }
   }
