@@ -31,23 +31,26 @@ function isCPF() {
   cpf = docUserValue.replace(/\.|-/g, "")
   console.log(cpf)
   console.log(typeof cpf);
+  
 
   if (docUserValue === "") {
     setErrorFor(docUser, "Preencha esse campo")
+    return 
   } else if (
     docUserValue.length != 11 ||
-    docUserValue == "00000000000" ||
-    docUserValue == "11111111111" ||
-    docUserValue == "22222222222" ||
-    docUserValue == "33333333333" ||
-    docUserValue == "44444444444" ||
-    docUserValue == "55555555555" ||
-    docUserValue == "66666666666" ||
-    docUserValue == "77777777777" ||
-    docUserValue == "88888888888" ||
-    docUserValue == "99999999999"
+    docUserValue === "00000000000" ||
+    docUserValue === "11111111111" ||
+    docUserValue === "22222222222" ||
+    docUserValue === "33333333333" ||
+    docUserValue === "44444444444" ||
+    docUserValue === "55555555555" ||
+    docUserValue === "66666666666" ||
+    docUserValue === "77777777777" ||
+    docUserValue === "88888888888" ||
+    docUserValue === "99999999999"
   ) {
     setErrorFor(docUser, "CPF inválido")
+    return 
   } else {
     setSuccessFor(docUser)
   }

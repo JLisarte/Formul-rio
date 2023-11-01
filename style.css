@@ -13,7 +13,6 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-
     border: 0;
 }
 
@@ -31,7 +30,7 @@ body {
 
 .header h2 {
     font-weight: 600;
-    color: #7d98e1;
+    color: #499bc0;
     font-size: 30px;
 }
 
@@ -48,7 +47,7 @@ body {
 .form-control label {
     display: inline-block;
     margin-bottom: 5px;
-    color: #9aa7d4;
+    color: #499bc0;
 }
 
 .form-control input {
@@ -100,7 +99,7 @@ body {
 .form-control i {
     position: absolute;
     top: 45px;
-    right: 18px;
+    right: -25px;
     visibility: hidden;
 }
 
@@ -113,20 +112,18 @@ body {
 }
 
 .form button {
-    background-color: #6C63FF;
+    background-color: #499bc0;
     border-radius: 5px;
     color: #fff;
     padding: 15px;
     font-size: 15px;
     font-weight: 600;
     width: 100%;
-
     margin-top: 5px;
-
     cursor: pointer;
 }
 
 .form button:hover {
-    background-color: #584ff5;
+    background-color: #4fb0f5;
     transition: 0.3s;
 }
