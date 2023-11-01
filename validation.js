@@ -1,24 +1,25 @@
 const form = document.getElementById("form")
 const username = document.getElementById("username")
 const docUser = document.getElementById("doc-user")
+const bornDateUser = document.getElementById("bornDate-user")
 const ageUser = document.getElementById("age-user")
 const email = document.getElementById("email")
 const postalCodeUser = document.getElementById("postalCode-user")
 const adressUser = document.getElementById("adress-user")
 const genderUser = document.getElementById("gender-user")
-const bornDateUser = document.getElementById("bornDate-user")
 const msgUser = document.getElementById("msg-user")
 
-form.addEventListener("keyup", (e) => {
-  e.preventDefault()
-  formatCPF()
-})
+docUser.addEventListener("keyup", formatCPF)
 
 function formatCPF() {
-  let value = docUser.value
-    .replace(/[^0-9]/g, "")
-    .replace(/^([\d]{3})([\d]{3})?([\d]{3})?([\d]{2})?/, "$1.$2.$3-$4")
-  docUser.value = value
+  let cpfValue = docUser.value.trim()
+  cpfValue = cpfValue.replace(/[^0-9]/g, "").substring(0, 11)
+  const formattedCPF = cpfValue.replace(
+    /^([\d]{3})([\d]{3})?([\d]{3})?([\d]{2})?/,
+    "$1.$2.$3-$4"
+  )
+  console.log("Novo formato ", formattedCPF)
+  docUser.value = formattedCPF
 }
 
 form.addEventListener("submit", (e) => {
@@ -26,70 +27,73 @@ form.addEventListener("submit", (e) => {
   isCPF()
 })
 
+function isGenericCPF(CPFFormatado) {
+  const genereicCPFs = [
+    "00000000000",
+    "11111111111",
+    "22222222222",
+    "33333333333",
+    "44444444444",
+    "55555555555",
+    "66666666666",
+    "77777777777",
+    "88888888888",
+    "99999999999",
+  ]
+
+  return genereicCPFs.includes(CPFFormatado)
+}
+
 function isCPF() {
-  const docUserValue = docUser.value
-  cpf = docUserValue.replace(/\.|-/g, "")
-  console.log(cpf)
-  console.log(typeof cpf);
-  
+  const docUserValue = docUser.value.trim()
+  const CPFFormatado = docUserValue.replace(/\.|-/g, "")
 
   if (docUserValue === "") {
     setErrorFor(docUser, "Preencha esse campo")
-    return 
-  } else if (
-    docUserValue.length != 11 ||
-    docUserValue === "00000000000" ||
-    docUserValue === "11111111111" ||
-    docUserValue === "22222222222" ||
-    docUserValue === "33333333333" ||
-    docUserValue === "44444444444" ||
-    docUserValue === "55555555555" ||
-    docUserValue === "66666666666" ||
-    docUserValue === "77777777777" ||
-    docUserValue === "88888888888" ||
-    docUserValue === "99999999999"
-  ) {
+    return
+  }
+
+  if (isGenericCPF(CPFFormatado)) {
     setErrorFor(docUser, "CPF inválido")
-    return 
-  } else {
-    setSuccessFor(docUser)
+    console.log("CPF genérico")
+    return
   }
 
   let soma = 0
-  soma += cpf[0] * 10
-  soma += cpf[1] * 9
-  soma += cpf[2] * 8
-  soma += cpf[3] * 7
-  soma += cpf[4] * 6
-  soma += cpf[5] * 5
-  soma += cpf[6] * 4
-  soma += cpf[7] * 3
-  soma += cpf[8] * 2
+  soma += CPFFormatado[0] * 10
+  soma += CPFFormatado[1] * 9
+  soma += CPFFormatado[2] * 8
+  soma += CPFFormatado[3] * 7
+  soma += CPFFormatado[4] * 6
+  soma += CPFFormatado[5] * 5
+  soma += CPFFormatado[6] * 4
+  soma += CPFFormatado[7] * 3
+  soma += CPFFormatado[8] * 2
   soma = (soma * 10) % 11
   if (soma == 10 || soma == 11) {
     soma = 0
   }
-  if (soma != cpf[9]) {
+  if (soma != CPFFormatado[9]) {
     return false
   }
 
   soma = 0
-  soma += cpf[0] * 11
-  soma += cpf[1] * 10
-  soma += cpf[2] * 9
-  soma += cpf[3] * 8
-  soma += cpf[4] * 7
-  soma += cpf[5] * 6
-  soma += cpf[6] * 5
-  soma += cpf[7] * 4
-  soma += cpf[8] * 3
-  soma += cpf[9] * 2
+  soma += CPFFormatado[0] * 11
+  soma += CPFFormatado[1] * 10
+  soma += CPFFormatado[2] * 9
+  soma += CPFFormatado[3] * 8
+  soma += CPFFormatado[4] * 7
+  soma += CPFFormatado[5] * 6
+  soma += CPFFormatado[6] * 5
+  soma += CPFFormatado[7] * 4
+  soma += CPFFormatado[8] * 3
+  soma += CPFFormatado[9] * 2
 
   soma = (soma * 10) % 11
   if (soma == 10 || soma == 11) {
     soma = 0
   }
-  if (soma != cpf[10]) {
+  if (soma != CPFFormatado[10]) {
     setErrorFor(docUser, "CPF inválido!")
     return false
   }
@@ -184,3 +188,27 @@ function isEmail(email) {
     email
   )
 }
+
+bornDateUser.addEventListener("keyup", calculoIdade)
+
+function calculoIdade() {
+  const dataNascimento = new Date(bornDateUser.value)
+  const dia = String(dataNascimento.getDate()).padStart(2, "0")
+  const mes = String(dataNascimento.getMonth() + 1).padStart(2, "0")
+  const ano = dataNascimento.getFullYear()
+  const dataFormatada = dia + "/" + mes + "/" + ano
+  console.log(dataFormatada)
+
+  const dataAtual = new Date()
+  const diaAtual = String(dataAtual.getDate()).padStart(2, "0")
+  const mesAtual = String(dataAtual.getMonth() + 1).padStart(2, "0")
+  const anoAtual = dataAtual.getFullYear()
+  const dataAtualFormatada = diaAtual + "/" + mesAtual + "/" + anoAtual
+  console.log(dataAtualFormatada)
+
+  const diff = dataAtual.getTime() - dataNascimento.getTime()
+  const anos = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25))
+  console.log(anos)
+  document.getElementById("age-user").value = anos
+}
+  
