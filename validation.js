@@ -5,7 +5,10 @@ const bornDateUser = document.getElementById("bornDate-user")
 const ageUser = document.getElementById("age-user")
 const email = document.getElementById("email")
 const postalCodeUser = document.getElementById("postalCode-user")
-const adressUser = document.getElementById("adress-user")
+const streetUser = document.getElementById("street-user")
+const neighborhoodUser = document.getElementById("neighborhood-user")
+const cityUser = document.getElementById("city-user")
+const stateUser = document.getElementById("state-user")
 const genderUser = document.getElementById("gender-user")
 const msgUser = document.getElementById("msg-user")
 
@@ -112,7 +115,10 @@ function checkInputs() {
   const ageUserValue = ageUser.value.trim()
   const emailValue = email.value.trim()
   const postalCodeUserValue = postalCodeUser.value.trim()
-  const adressUserValue = adressUser.value.trim()
+  const streetUserValue = streetUser.value.trim()
+  const neighborhoodUserValue = neighborhoodUser.value.trim()
+  const cityUserValue = cityUser.value.trim()
+  const stateUserValue = stateUser.value.trim()
   const genderUserValue = genderUser.value.trim()
   const bornDateUserValue = bornDateUser.value.trim()
   const msgUserValue = msgUser.value.trim()
@@ -143,10 +149,28 @@ function checkInputs() {
     setSuccessFor(postalCodeUser)
   }
 
-  if (adressUserValue === "") {
-    setErrorFor(adressUser, "Preencha esse campo")
+  if (streetUserValue === "") {
+    setErrorFor(streetUser, "Preencha esse campo")
   } else {
-    setSuccessFor(adressUser)
+    setSuccessFor(streetUser)
+  }
+  
+  if (neighborhoodUserValue === "") {
+    setErrorFor(neighborhoodUser, "Preencha esse campo")
+  } else {
+    setSuccessFor(neighborhoodUser)
+  }
+
+  if (cityUserValue === "") {
+    setErrorFor(cityUser, "Preencha esse campo")
+  } else {
+    setSuccessFor(cityUser)
+  }
+
+  if (stateUserValue === "") {
+    setErrorFor(stateUser, "Preencha esse campo")
+  } else {
+    setSuccessFor(stateUser)
   }
 
   if (genderUserValue === "") {
@@ -211,4 +235,27 @@ function calculoIdade() {
   console.log(anos)
   document.getElementById("age-user").value = anos
 }
-  
+
+postalCodeUser.addEventListener("keyup", buscaCep)
+
+function buscaCep() {
+  const cep = document.getElementById("postalCode-user").value
+  if (cep !== "") {
+    const url = "https://brasilapi.com.br/api/cep/v1/" + cep
+
+    const req = new XMLHttpRequest()
+    req.open("GET", url)
+    req.send()
+
+    req.onload = function () {
+      if (req.status === 200) {
+        const endereco = JSON.parse(req.response)
+        document.getElementById("street-user").value = endereco.street
+        document.getElementById("neighborhood-user").value =
+          endereco.neighborhood
+        document.getElementById("city-user").value = endereco.city
+        document.getElementById("state-user").value = endereco.state
+      }
+    }
+  }
+}

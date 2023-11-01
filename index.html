@@ -56,7 +56,7 @@
 
         <div class="form-control">
           <label>Email:</label>
-          <input type="email" id="email" />
+          <input type="email" id="email" placeholder="Insira seu e-mail"/>
           <i class="img-success"><img src="./img/success-icon.svg" alt="" /></i>
           <i class="img-error"><img src="./img/error-icon.svg" alt="" /></i>
 
@@ -65,7 +65,7 @@
 
         <div class="form-control">
           <label for="postalCode-user">CEP:</label>
-          <input type="text" id="postalCode-user" />
+          <input type="text" id="postalCode-user" placeholder="Insira o CEP"/>
           <i class="img-success"><img src="./img/success-icon.svg" alt="" /></i>
           <i class="img-error"><img src="./img/error-icon.svg" alt="" /></i>
 
@@ -73,8 +73,15 @@
         </div>
 
         <div class="form-control">
-          <label for="adress-user">Endereço:</label>
-          <input type="text" id="adress-user" />
+          <label for="adress-user" >Endereço:</label>
+          <p>Logradouro:</p>
+          <input type="text" id="street-user" readonly/>
+          <p>Bairro:</p>
+          <input type="text" id="neighborhood-user" readonly/>
+          <p>Cidade:</p>
+          <input type="text" id="city-user" readonly/>
+          <p>Estado:</p>
+          <input type="text" id="state-user" readonly/>
           <i class="img-success"><img src="./img/success-icon.svg" alt="" /></i>
           <i class="img-error"><img src="./img/error-icon.svg" alt="" /></i>
 
@@ -84,7 +91,7 @@
         <div class="form-control">
           <label for="gender-user">Sexo:</label>
           <select name="" id="gender-user">
-            <option value=""></option>
+            <option value="">Escolha uma opção</option>
             <option value="female">Feminino</option>
             <option value="male">Masculino</option>
             <option value="other">Outro</option>
@@ -97,7 +104,7 @@
 
         <div class="form-control">
           <label for="msg-user">Mensagem:</label>
-          <textarea id="msg-user" cols="48" rows="10"></textarea>
+          <textarea id="msg-user" cols="48" rows="10" placeholder="Insira uma mensagem"></textarea>
 
           <i class="img-success"><img src="./img/success-icon.svg" alt="" /></i>
           <i class="img-error"><img src="./img/error-icon.svg" alt="" /></i>
