@@ -12,10 +12,22 @@
       <div class="header">
         <h2>Preencha o formulário</h2>
       </div>
-      <form class="form" id="form">
+      <form
+        target="_blank"
+        action="https://formsubmit.co/juliano.lisarte@gmail.com"
+        class="form"
+        id="form"
+        method="POST"
+        data-form
+      >
         <div class="form-control">
           <label for="username">Nome:</label>
-          <input type="text" id="username" placeholder="Insira seu nome" />
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Insira seu nome"
+          />
           <i class="img-success"><img src="./img/success-icon.svg" alt="" /></i>
           <i class="img-error"><img src="./img/error-icon.svg" alt="" /></i>
 
@@ -27,6 +39,7 @@
           <input
             type="text"
             id="doc-user"
+            name="doc-user"
             placeholder="Insira seu CPF"
             maxlength="14"
           />
@@ -38,7 +51,7 @@
 
         <div class="form-control">
           <label for="bornDate-user">Data de Nascimento:</label>
-          <input type="date" id="bornDate-user" />
+          <input type="date" id="bornDate-user" name="bornDate-user" />
           <i class="img-success"><img src="./img/success-icon.svg" alt="" /></i>
           <i class="img-error"><img src="./img/error-icon.svg" alt="" /></i>
 
@@ -50,6 +63,7 @@
           <input
             type="text"
             id="age-user"
+            name="age-user"
             placeholder="Preencha a data de nascimento"
             readonly
           />
@@ -61,7 +75,12 @@
 
         <div class="form-control">
           <label>Email:</label>
-          <input type="email" id="email" placeholder="Insira seu e-mail" />
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Insira seu e-mail"
+          />
           <i class="img-success"><img src="./img/success-icon.svg" alt="" /></i>
           <i class="img-error"><img src="./img/error-icon.svg" alt="" /></i>
 
@@ -70,7 +89,12 @@
 
         <div class="form-control">
           <label for="postalCode-user">CEP:</label>
-          <input type="text" id="postalCode-user" placeholder="Insira o CEP" />
+          <input
+            type="text"
+            id="postalCode-user"
+            name="postalCode-user"
+            placeholder="Insira o CEP"
+          />
           <i class="img-success"><img src="./img/success-icon.svg" alt="" /></i>
           <i class="img-error"><img src="./img/error-icon.svg" alt="" /></i>
           <p>
@@ -88,13 +112,18 @@
         <div class="form-control">
           <label for="adress-user">Endereço:</label>
           <p>Logradouro:</p>
-          <input type="text" id="street-user" readonly />
+          <input type="text" id="street-user" name="street-user" readonly />
           <p>Bairro:</p>
-          <input type="text" id="neighborhood-user" readonly />
+          <input
+            type="text"
+            id="neighborhood-user"
+            name="neighborhood-user"
+            readonly
+          />
           <p>Cidade:</p>
-          <input type="text" id="city-user" readonly />
+          <input type="text" id="city-user" name="city-user" readonly />
           <p>Estado:</p>
-          <input type="text" id="state-user" readonly />
+          <input type="text" id="state-user" name="state-user" readonly />
           <i class="img-success"><img src="./img/success-icon.svg" alt="" /></i>
           <i class="img-error"><img src="./img/error-icon.svg" alt="" /></i>
 
@@ -103,7 +132,7 @@
 
         <div class="form-control">
           <label for="gender-user">Sexo:</label>
-          <select name="" id="gender-user">
+          <select name="gender-user" id="gender-user">
             <option value="">Escolha uma opção</option>
             <option value="female">Feminino</option>
             <option value="male">Masculino</option>
@@ -119,6 +148,7 @@
           <label for="msg-user">Mensagem:</label>
           <textarea
             id="msg-user"
+            name="msg-user"
             cols="48"
             rows="10"
             placeholder="Insira uma mensagem"
@@ -130,7 +160,7 @@
           <small>Error Message</small>
         </div>
 
-        <button type="submit">ENVIAR</button>
+        <button type="submit" data-button>ENVIAR</button>
       </form>
     </div>
 
