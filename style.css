@@ -16,15 +16,18 @@ body {
   border: 0;
 }
 
-input, select, textarea {
-    font-family: poppins;
-    color: dimgrey;
+input,
+select,
+textarea {
+  font-family: poppins;
+  color: dimgrey;
 }
 
 textarea {
-    border-radius: 5px;
-    width: 100%;
-    padding: 15px 15px;
+  border-radius: 5px;
+  width: 100%;
+  display: block;
+  padding: 15px 15px;
 }
 
 .container {
@@ -151,12 +154,12 @@ textarea {
 }
 
 .form-control p {
-    color: #499bc0;
-    font-size: 14px;
-    font-weight: 600;
+  color: #499bc0;
+  font-size: 14px;
+  font-weight: 600;
 }
 .form-control a {
-    color: #499bc0;
-    font-size: 14px;
-    font-weight: 600;
+  color: #499bc0;
+  font-size: 14px;
+  font-weight: 600;
 }
